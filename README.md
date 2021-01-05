@@ -19,7 +19,7 @@ A REST API of books with postgreSQL cloud database.
 
 ## Screenshots
 
-##Tech Stack
+## Tech Stack
 HTML, CSS, Javascript, NodeJS, ElephantSQL
 
 ## Collaborators
