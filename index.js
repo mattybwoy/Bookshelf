@@ -14,5 +14,9 @@ app.get('/', (req, res) => {
 
 })
 
+app.get('/add', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/add.html')); 
+})
+
 
 app.listen(port, () => console.log(`Listening on port ${port}...`))
