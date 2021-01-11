@@ -3,8 +3,7 @@ require('dotenv').config()
 //or native libpq bindings
 //var pg = require('pg').native
 
-var conString = "postgres://ozriaifw:5At3D0pBoiOILjThJV8JSr8zwkksl7kp@rogue.db.elephantsql.com:5432/ozriaifw" //Can be found in the Details page
-var client = new pg.Client(conString);
+var client = new pg.Client(process.env.conString);
 client.connect(function(err) {
   if(err) {
     return console.error('could not connect to postgres', err);
