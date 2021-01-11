@@ -8,7 +8,11 @@ Bookshelf
 A REST API of books with postgreSQL cloud database.
 
 
-## Progress 
+## Progress
+- Homepage created
+- Entry page created
+- Bootstrap installed for CSS
+- Cloud database connected 
 
 ## Improvements
 
@@ -16,6 +20,7 @@ A REST API of books with postgreSQL cloud database.
 
 ## Installation
 - Clone repository
+- npm install
 
 ## Screenshots
 
