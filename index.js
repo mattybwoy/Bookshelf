@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 const port = 3000;
+const client = require('./elephantsql');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,7 +13,13 @@ app.set('view engine', 'ejs');
 
 let books = [];
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  try {
+    const results = await client.query('SELECT * FROM books');
+    res.json(results);
+  } catch (err) {
+    console.log(err);
+  }
   res.send(add)
 })
 
@@ -26,6 +33,10 @@ app.post('/add', (req, res) => {
   books.push(book)
   console.log(book)
   res.send('Book Added!')
+})
+
+app.get('/list', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/list.html'));
 })
 
 
