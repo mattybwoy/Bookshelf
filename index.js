@@ -13,13 +13,7 @@ app.set('view engine', 'ejs');
 
 let books = [];
 
-app.get('/', async (req, res) => {
-  try {
-    const results = await client.query('SELECT * FROM books');
-    res.json(results);
-  } catch (err) {
-    console.log(err);
-  }
+app.get('/', (req, res) => {
   res.send(add)
 })
 
@@ -35,7 +29,13 @@ app.post('/add', (req, res) => {
   res.send('Book Added!')
 })
 
-app.get('/list', (req, res) => {
+app.get('/list', async (req, res) => {
+  try {
+    const results = await client.query('SELECT * FROM books');
+    res.json(results);
+  } catch (err) {
+    console.log(err);
+  }
   res.sendFile(path.join(__dirname + '/public/list.html'));
 })
 

@@ -13,6 +13,7 @@ A REST API of books with postgreSQL cloud database.
 - Entry page created
 - Bootstrap installed for CSS
 - Cloud database connected 
+- List page created
 
 ## Improvements
 
