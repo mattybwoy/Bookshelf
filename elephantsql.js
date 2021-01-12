@@ -14,7 +14,7 @@ client.connect(function(err) {
     }
     console.log(result.rows[0].theTime);
 
-    client.end();
+    //client.end();
   });
 });
 

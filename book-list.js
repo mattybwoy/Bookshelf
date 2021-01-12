@@ -9,7 +9,7 @@ const deleteBook = (isbn) => {
 const loadBooks = () => {
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "http://localhost:3000", false);
+    xhttp.open("GET", "http://localhost:3000/list", false);
     xhttp.send();
 
     const books = JSON.parse(xhttp.responseText);
@@ -24,7 +24,7 @@ const loadBooks = () => {
 
                         <div>Author: ${book.author}</div>
                         <div>Publisher: ${book.publisher}</div>
-                        <div>Number Of Pages: ${book.numOfPages}</div>
+                        <div>Number Of Pages: ${book.pages}</div>
 
                         <hr>
 

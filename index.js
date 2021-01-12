@@ -11,7 +11,15 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
 
-let books = [];
+let books = [{
+    "isbn": "9781593275846",
+    "title": "Eloquent JavaScript, Second Edition",
+    "author": "Marijn Haverbeke",
+    "publish_date": "2014-12-14",
+    "publisher": "No Starch Press",
+    "numOfPages": 472,
+}
+];
 
 app.get('/', (req, res) => {
   res.send(add)
@@ -30,13 +38,14 @@ app.post('/add', (req, res) => {
 })
 
 app.get('/list', async (req, res) => {
-  try {
-    const results = await client.query('SELECT * FROM books');
-    res.json(results);
-  } catch (err) {
-    console.log(err);
-  }
-  res.sendFile(path.join(__dirname + '/public/list.html'));
+  res.json(books)
+  // try {
+  //   const results = await client.query('SELECT * FROM books');
+  //   res.json(results);
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  // res.sendFile(path.join(__dirname + '/public/list.html'));
 })
 
 
