@@ -15,11 +15,10 @@ let books = [{
     "isbn": "9781593275846",
     "title": "Eloquent JavaScript, Second Edition",
     "author": "Marijn Haverbeke",
-    "publish_date": "2014-12-14",
     "publisher": "No Starch Press",
-    "numOfPages": 472,
-}
-];
+    "pages": 472,
+    "rating": 5
+}];
 
 app.get('/', (req, res) => {
   res.send(add)
@@ -41,11 +40,13 @@ app.get('/list', async (req, res) => {
   res.json(books)
   // try {
   //   const results = await client.query('SELECT * FROM books');
+  //   console.log(results)
   //   res.json(results);
+    
   // } catch (err) {
   //   console.log(err);
   // }
-  // res.sendFile(path.join(__dirname + '/public/list.html'));
+   //res.sendFile(path.join(__dirname + '/public/list.html'));
 })
 
 
