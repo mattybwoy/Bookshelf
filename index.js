@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const port = 3000;
 const client = require('./elephantsql');
+var booklist = require('./booklist')
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -11,14 +12,6 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
 
-// let books = [{
-//     "isbn": "9781593275846",
-//     "title": "Eloquent JavaScript, Second Edition",
-//     "author": "Marijn Haverbeke",
-//     "publisher": "No Starch Press",
-//     "pages": 472,
-//     "rating": 5
-// }];
 
 app.get('/', (req, res) => {
   res.send(add)
@@ -30,16 +23,15 @@ app.get('/add', (req, res) => {
 })
 
 app.post('/add', (req, res) => {
-  const book = req.body
-  books.push(book)
-  console.log(book)
-  res.send('Book Added!')
+  booklist.add(req.body.isbn, req.body.title, req.body.author, req.body.publisher, req.body.pages, req.body.rating)
+  res.redirect('/');
+  res.status(201).json({status: 'success', message: 'Book added'})
 })
 
 app.get('/list', async (req, res) => {
   //res.json(books)
   try {
-    const results = await client.query('SELECT * FROM books', (error, result) => {
+    await client.query('SELECT * FROM books', (error, result) => {
       if(error) {
         console.log(error)
         throw error
