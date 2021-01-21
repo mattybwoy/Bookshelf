@@ -14,6 +14,8 @@ A REST API of books with postgreSQL cloud database.
 - Bootstrap installed for CSS
 - Cloud database connected 
 - List page created
+- Books can now be added into database
+- Books are displayed in JSON format in list page
 
 ## Improvements
 
