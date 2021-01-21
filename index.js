@@ -25,11 +25,10 @@ app.get('/add', (req, res) => {
 app.post('/add', (req, res) => {
   booklist.add(req.body.isbn, req.body.title, req.body.author, req.body.publisher, req.body.pages, req.body.rating)
   res.redirect('/');
-  res.status(201).json({status: 'success', message: 'Book added'})
+  //res.status(201).json({status: 'success', message: 'Book added'})
 })
 
 app.get('/list', async (req, res) => {
-  //res.json(books)
   try {
     await client.query('SELECT * FROM books', (error, result) => {
       if(error) {
