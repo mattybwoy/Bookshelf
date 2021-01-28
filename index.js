@@ -28,13 +28,18 @@ app.post('/add', (req, res) => {
 })
 
 app.get('/list', async (req, res) => {
+  var bookList = []
   try {
     await client.query('SELECT * FROM books', (error, result) => {
       if(error) {
         console.log(error)
         throw error
       }
-      res.status(200).json(result.rows)
+      //console.log(result.rows[0].title)
+    result.rows.forEach(element => bookList.push( new booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
+    //return listOfSpaces
+    console.log(bookList)
+      res.status(200).json(bookList)
     });
     //res.json(results);
     //res.sendFile(path.join(__dirname + '/public/list.html'));
@@ -43,6 +48,22 @@ app.get('/list', async (req, res) => {
   }
    
 })
+
+app.get('/list/:isbn', (req, res) => {
+    // Reading isbn from the URL
+    const isbn = req.params.isbn;
+
+    // Searching books for the isbn
+    for (let book of books) {
+        if (book.isbn === isbn) {
+            res.json(book);
+            return;
+        }
+    }
+
+    // Sending 404 when not found something is a good practice
+    res.status(404).send('Book not found');
+});
 
 
 app.listen(port, () => console.log(`Listening on port ${port}...`))
