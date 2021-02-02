@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const port = 3000;
 const client = require('./elephantsql');
-var booklist = require('./booklist')
+var booklist = require('./booklist');
+const { json } = require('body-parser');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -53,16 +54,22 @@ app.get('/list/:isbn', (req, res) => {
     // Reading isbn from the URL
     const isbn = req.params.isbn;
 
-    // Searching books for the isbn
-    for (let book of books) {
-        if (book.isbn === isbn) {
-            res.json(book);
-            return;
-        }
+    try {
+    client.query('SELECT * FROM books', (error, result) => {
+      if(error) {
+        console.log(error)
+        throw error
+      }
+    for (let book of result.rows) {
+      if(book.isbn == isbn) {
+        return res.json(book)
+      }
     }
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
-    // Sending 404 when not found something is a good practice
-    res.status(404).send('Book not found');
 });
 
 
