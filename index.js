@@ -72,5 +72,48 @@ app.get('/list/:isbn', (req, res) => {
 
 });
 
+app.get('/delete/:isbn', (req, res) => {
+  //res.send('Please input ISBN in URL')
+  const isbn = req.params.isbn;
+
+    try {
+    client.query('SELECT * FROM books', (error, result) => {
+      if(error) {
+        console.log('The error is ' + error)
+        throw error
+      }
+    for (let book of result.rows) {
+      if(book.isbn == isbn) {
+        client.query('DELETE FROM books WHERE isbn = $1',[isbn])
+        return res.status(200).send(`Book deleted with ISBN ${isbn}`)
+      }
+    }
+    });
+  } catch (err) {
+    console.log('What is the error' + err);
+  }
+})
+
+// app.delete('/delete/:isbn', (req, res) => {
+//     const isbn = req.params.isbn;
+
+//     try {
+//     client.query('SELECT * FROM books', (error, result) => {
+//       if(error) {
+//         console.log('The error is ' + error)
+//         throw error
+//       }
+//     for (let book of result.rows) {
+//       if(book.isbn == isbn) {
+//         client.query('DELETE FROM books WHERE isbn == [isbn]')
+//         return res.status(200).send(`Book deleted with ISBN ${isbn}`)
+//       }
+//     }
+//     });
+//   } catch (err) {
+//     console.log('What is the error' + err);
+//   }
+// })
+
 
 app.listen(port, () => console.log(`Listening on port ${port}...`))
