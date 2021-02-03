@@ -17,6 +17,7 @@ A REST API of books with postgreSQL cloud database.
 - Books can now be added into database
 - Books are displayed in JSON format in list page
 - Individual books can be selected from url
+- Individual books can now be deleted by ISBN
 
 ## Improvements
 
