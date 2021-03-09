@@ -18,9 +18,31 @@ class Booklist {
       if (err) {
         return console.error('could not connect to postgres', err);
       }
-
+      console.log(isbn)
       client.query(`INSERT INTO books(isbn, title, author, publisher, pages, rating) VALUES('${isbn}', '${title}', '${author}', '${publisher}', '${pages}', '${rating}');`,
       );
+    })
+  }
+
+  static edit(isbn, title, author, publisher, pages, rating) {
+    var pg = require('pg');
+    require('dotenv').config();
+
+    var client = new pg.Client(process.env.conString);
+
+    client.connect(function (err) {
+      if (err) {
+        return console.error('could not connect to postgres', err);
+      }
+      
+      console.log("isbn is")
+      console.log(isbn)
+      console.log(title)
+    client.query(`UPDATE books SET(title='${title}', author='${author}', publisher='${publisher}', pages='${pages}', rating='${rating}') WHERE isbn='${isbn}'`,)
+  //     res.status(200).send(`Book modified with ISBN: ${isbn}`)
+  //   ;catch (err) {
+  //   console.log('What is the error' + err);
+  // }
     })
   }
 

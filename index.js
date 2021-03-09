@@ -6,10 +6,12 @@ const port = 3000;
 const client = require('./elephantsql');
 var booklist = require('./booklist');
 const { json } = require('body-parser');
+var methodOverride = require('method-override')
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'))
 
 app.set('view engine', 'ejs');
 
@@ -28,13 +30,17 @@ app.post('/add', (req, res) => {
   res.redirect('/');
 })
 
-app.get('/edit', (req, res) => {
+app.get('/edit', (req,res) => {
+  res.sendFile(path.join(__dirname + '/public/edit.html'));
+})
+
+app.put('/edit', (req, res) => {
+  console.log("req isbn is")
+  console.log(req.body.isbn)
+  booklist.edit(req.body.isbn, req.body.title, req.body.author, req.body.publisher, req.body.pages, req.body.rating)
   res.send('Book has been updated!')
 })
 
-app.get('/edit/:isbn', (req,res) => {
-  res.sendFile(path.join(__dirname + '/public/edit.html'));
-})
 
 app.put('/edit/:isbn', (req, res) => {
   console.log(req.body)
