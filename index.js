@@ -79,6 +79,10 @@ app.get('/list/:isbn', (req, res) => {
 
 });
 
+app.get('/delete', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/delete.html'));
+})
+
 app.get('/delete/:isbn', (req, res) => {
   //res.send('Please input ISBN in URL')
   const isbn = req.params.isbn;
