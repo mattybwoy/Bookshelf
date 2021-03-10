@@ -35,6 +35,21 @@ class Booklist {
       client.query('UPDATE books SET title=($2), author=($3), publisher=($4), pages=($5), rating=($6) WHERE isbn=($1);',[isbn, title, author, publisher, pages, rating]);
     })
   }
+
+  static delete(isbn) {
+    var pg = require('pg');
+    require('dotenv').config();
+
+    var client = new pg.Client(process.env.conString);
+
+    client.connect(function (err) {
+      if (err) {
+        return console.error('could not connect to postgres', err);
+      }
+      client.query('DELETE FROM books WHERE isbn = $1',[isbn])
+    })
   }
+
+}
 
 module.exports = Booklist;

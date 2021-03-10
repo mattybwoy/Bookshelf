@@ -83,6 +83,14 @@ app.get('/delete', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/delete.html'));
 })
 
+app.delete('/delete', (req,res) => {
+  const isbn = req.body.isbn
+  console.log(isbn)
+  booklist.delete(req.body.isbn)
+  res.send('Book with ISBN:' + isbn + ' has been deleted!')
+})
+
+
 app.get('/delete/:isbn', (req, res) => {
   //res.send('Please input ISBN in URL')
   const isbn = req.params.isbn;
