@@ -18,6 +18,7 @@ A REST API of books with postgreSQL cloud database.
 - Books are displayed in JSON format in list page
 - Individual books can be selected from url
 - Individual books can now be deleted by ISBN
+- Individual books can now be updated by ISBN
 
 ## Improvements
 
@@ -30,7 +31,7 @@ A REST API of books with postgreSQL cloud database.
 ## Screenshots
 
 ## Tech Stack
-HTML, CSS, Javascript, NodeJS, ElephantSQL
+HTML, CSS, Javascript, NodeJS, Express, ElephantSQL
 
 ## Collaborators
 mattybwoy
