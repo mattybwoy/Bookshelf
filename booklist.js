@@ -38,12 +38,16 @@ class Booklist {
       console.log("isbn is")
       console.log(isbn)
       console.log(title)
-    client.query(`UPDATE books SET(title='${title}', author='${author}', publisher='${publisher}', pages='${pages}', rating='${rating}') WHERE isbn='${isbn}'`,)
-  //     res.status(200).send(`Book modified with ISBN: ${isbn}`)
+    client.query(`UPDATE books SET title=($2), author=($3), publisher=($4), pages=($5), rating=($6) WHERE isbn=($1)`,[isbn,title,author,publisher,pages,rating]);
+
+        }
+    )
+
+    //     res.status(200).send(`Book modified with ISBN: ${isbn}`)
   //   ;catch (err) {
   //   console.log('What is the error' + err);
   // }
-    })
+    }
   }
 
   //   static async list(){
@@ -75,6 +79,5 @@ class Booklist {
   // }
     
   // }
-}
 
 module.exports = Booklist;
