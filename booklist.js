@@ -38,7 +38,7 @@ class Booklist {
       console.log("isbn is")
       console.log(isbn)
       console.log(title)
-    client.query(`UPDATE books SET title=($2), author=($3), publisher=($4), pages=($5), rating=($6) WHERE isbn=($1)`,[isbn,title,author,publisher,pages,rating]);
+    client.query('UPDATE books SET title=($2), author=($3), publisher=($4), pages=($5), rating=($6) WHERE isbn=($1);',[isbn, title, author, publisher, pages, rating]);
 
         }
     )
