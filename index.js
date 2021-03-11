@@ -57,6 +57,27 @@ app.get('/list', async (req, res) => {
    
 })
 
+app.post('/list/isbn', (req,res) => {
+  const isbn = req.body.isbn
+
+    try {
+    client.query('SELECT * FROM books', (error, result) => {
+      if(error) {
+        console.log(error)
+        throw error
+      }
+    for (let book of result.rows) {
+      if(book.isbn == isbn) {
+        return res.json(book)
+      }
+    }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
+})
+
 app.get('/list/:isbn', (req, res) => {
     // Reading isbn from the URL
     const isbn = req.params.isbn;
@@ -87,7 +108,7 @@ app.delete('/delete', (req,res) => {
   const isbn = req.body.isbn
   console.log(isbn)
   booklist.delete(req.body.isbn)
-  res.send('Book with ISBN:' + isbn + ' has been deleted!')
+  res.send('Book with ISBN: ' + isbn + ' has been deleted!')
 })
 
 
