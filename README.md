@@ -29,6 +29,9 @@ A REST API of books with postgreSQL cloud database.
 - Clone repository
 - npm install
 
+To Run
+- node index
+
 ## Screenshots
 
 ## Tech Stack
