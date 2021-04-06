@@ -22,20 +22,21 @@ A REST API of books with postgreSQL cloud database.
 - Individual books can be searched for in homepage
 
 ## Improvements
+- Bootstrap cards for listing
 
 ## Testing
 
 ## Installation
 - Clone repository
-- npm install
+- `npm install`
 
 To Run
-- node index
+- `node index`
 
 ## Screenshots
 
 ## Tech Stack
-HTML, CSS, Javascript, NodeJS, Express, ElephantSQL
+HTML, CSS, Bootstrap, Javascript, NodeJS, Express, ElephantSQL
 
 ## Collaborators
 mattybwoy
