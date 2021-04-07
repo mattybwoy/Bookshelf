@@ -70,35 +70,12 @@ app.post('/list/isbn', (req,res) => {
       if(book.isbn == isbn) {
         return res.json(book)
       }
-    }
+    } 
     });
   } catch (err) {
     console.log(err);
   }
-
 })
-
-app.get('/list/:isbn', (req, res) => {
-    // Reading isbn from the URL
-    const isbn = req.params.isbn;
-
-    try {
-    client.query('SELECT * FROM books', (error, result) => {
-      if(error) {
-        console.log(error)
-        throw error
-      }
-    for (let book of result.rows) {
-      if(book.isbn == isbn) {
-        return res.json(book)
-      }
-    }
-    });
-  } catch (err) {
-    console.log(err);
-  }
-
-});
 
 app.get('/delete', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/delete.html'));
