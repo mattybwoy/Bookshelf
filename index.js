@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
 
 app.get('/add', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/add.html'));
-
 })
 
 app.post('/add', (req, res) => {
@@ -40,20 +39,23 @@ app.put('/edit', (req, res) => {
 
 
 app.get('/list', async (req, res) => {
-  var bookList = []
-  try {
-    await client.query('SELECT * FROM books', (error, result) => {
-      if(error) {
-        console.log(error)
-        throw error
-      }
-    result.rows.forEach(element => bookList.push( new booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
-    console.log(bookList)
-      res.status(200).json(bookList)
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  booklist.list()
+  res.sendFile(path.join(__dirname + '/public/list.html'));
+
+  // var bookList = []
+  // try {
+  //   await client.query('SELECT * FROM books', (error, result) => {
+  //     if(error) {
+  //       console.log(error)
+  //       throw error
+  //     }
+  //   result.rows.forEach(element => bookList.push( new booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
+  //   console.log(bookList)
+  //     res.status(200).json(bookList)
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  // }
    
 })
 
