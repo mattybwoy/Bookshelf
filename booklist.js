@@ -1,3 +1,6 @@
+var jsdom = require("jsdom");
+var JSDOM = jsdom.JSDOM;
+
 class Booklist {
   constructor (isbn, title, author, publisher, pages, rating) {
     this.isbn = isbn,
@@ -76,10 +79,12 @@ class Booklist {
                 </div>
             </div>
         `
-        const container = document.getElementById('booklisting')
-
+        //const container = window.document.getElementById('booklisting')
+        //global.document = new JSDOM("http://localhost:3000/list").window.document.getElementById('booklisting').innerHTML+= x;
+        const dom = new JSDOM(`<!DOCTYPE html><body><p id="main">My First JSDOM!</p></body>`)
+        console.log(dom.window.document.getElementById("main").textContent);
         //document.getElementById('booklisting').innerHTML = document.getElementById('booklisting').innerHTML + x;
-        container.innerHTML += x;
+        //container.innerHTML += x;
       }
     })
   })}
