@@ -44,6 +44,7 @@ class Booklist {
     require('dotenv').config();
 
     var client = new pg.Client(process.env.conString);
+    var bookList = []
 
     client.connect(function (err) {
       if (err) {
@@ -54,38 +55,8 @@ class Booklist {
         console.log(error)
         throw error
       }
-      console.log(result.rows)
-      for(let book of result.rows) {
-        console.log(book.title)
-        const x = `
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${book.title}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${book.isbn}</h6>
-
-                        <div>Author: ${book.author}</div>
-                        <div>Publisher: ${book.publisher}</div>
-                        <div>Number Of Pages: ${book.pages}</div>
-
-                        <hr>
-
-                        <button type="button" class="btn btn-danger">Delete</button>
-                        <button types="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#editBookModal" onClick="setEditModal(${book.isbn})">
-                            Edit
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `
-        //const container = window.document.getElementById('booklisting')
-        //global.document = new JSDOM("http://localhost:3000/list").window.document.getElementById('booklisting').innerHTML+= x;
-        const dom = new JSDOM(`<!DOCTYPE html><body><p id="main">My First JSDOM!</p></body>`)
-        console.log(dom.window.document.getElementById("main").textContent);
-        //document.getElementById('booklisting').innerHTML = document.getElementById('booklisting').innerHTML + x;
-        //container.innerHTML += x;
-      }
+      result.rows.forEach(element => bookList.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
+      return bookList
     })
   })}
 
