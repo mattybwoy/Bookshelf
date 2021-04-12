@@ -1,6 +1,3 @@
-var jsdom = require("jsdom");
-var JSDOM = jsdom.JSDOM;
-
 class Booklist {
   constructor (isbn, title, author, publisher, pages, rating) {
     this.isbn = isbn,
@@ -56,6 +53,7 @@ class Booklist {
         throw error
       }
       result.rows.forEach(element => bookList.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
+      console.log(bookList)
       return bookList
     })
   })}

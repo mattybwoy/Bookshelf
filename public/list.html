@@ -18,6 +18,7 @@
     <h1 class="h1">BookWorld</h1>
     <h2>List of Books</h2>
     <hr>
+
     <div class="col-4">
                 <div class="card">
                     <div class="card-body">
@@ -31,7 +32,7 @@
                         <hr>
                         <button type="button" class="btn btn-danger">Delete</button>
                         <button types="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#editBookModal" //onClick="setEditModal(${book.isbn})">
+                            data-target="#editBookModal" onClick="setEditModal(${book.isbn})">
                             Edit
                         </button>
                     </div>
@@ -39,7 +40,8 @@
             </div>
         <div class="row justify-content-around wow zoomIn" id="booklisting">
       </div>
-<script src="../booklist.js"></script>
+
+<!-- <script type= "text/javascript" src="../booklist.js"></script> -->
     <script src="" async defer></script>
   </body>
   <footer>A MATTYBWOY CREATION<br/>Powered by Node<br></br>
