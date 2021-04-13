@@ -46,7 +46,8 @@ class Booklist {
     client.connect(function (err) {
       if (err) {
         return console.error('could not connect to postgres', err);
-    }})
+      }
+    })
 
       var result = await client.query('SELECT * FROM books')
 
