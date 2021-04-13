@@ -39,7 +39,8 @@ app.put('/edit', (req, res) => {
 
 app.get('/list', async (req, res) => {
   booklist.list()
-  res.sendFile(path.join(__dirname + '/public/list.html'));
+  res.render('list')
+  //res.sendFile(path.join(__dirname + '/public/list.html'));
 
   // var bookList = []
   // try {
