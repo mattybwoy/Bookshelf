@@ -36,27 +36,24 @@ class Booklist {
     })
   }
 
-  static list() {
+  static async list() {
     var pg = require('pg');
     require('dotenv').config();
 
     var client = new pg.Client(process.env.conString);
-    var bookList = []
+    var listofbook = [];
 
     client.connect(function (err) {
       if (err) {
         return console.error('could not connect to postgres', err);
-      }
-      client.query('SELECT * FROM books', (error, result) => {
-      if(error) {
-        console.log(error)
-        throw error
-      }
-      result.rows.forEach(element => bookList.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
-      console.log(bookList)
-      return bookList
-    })
-  })}
+    }})
+
+      var result = await client.query('SELECT * FROM books')
+
+      result.rows.forEach(element => listofbook.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
+      console.log(listofbook)
+      return listofbook
+  }
 
   static delete(isbn) {
     var pg = require('pg');

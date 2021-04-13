@@ -38,7 +38,9 @@ app.put('/edit', (req, res) => {
 })
 
 app.get('/list', async (req, res) => {
-  booklist.list()
+  //booklist.list()
+  res.locals.listofbook = await booklist.list();
+  console.log(res.locals.listofbook)
   res.render('list')
   //res.sendFile(path.join(__dirname + '/public/list.html'));
 
