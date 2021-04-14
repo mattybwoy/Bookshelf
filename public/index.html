@@ -44,9 +44,18 @@
     </div>
     </form>
 
+  <script>
+    $( "form" ).submit(function( event ) {
+      var input = $( "input" ).val()
+        if ( input.length < 10 ) {
+          alert("ISBN must be 10 digits long");
+        }
+    });
+  </script>
+
     <script src="" async defer></script>
   </body>
   <footer>A MATTYBWOY CREATION<br/>Powered by Node<br></br>
-    <img src = "./nodejs-logo.png" alt="https://nodejs.org/en/" width= "40"></img>
+    <img src="./nodejs-logo.png" alt="https://nodejs.org/en/" width= "40"></img>
   </footer>
 </html>

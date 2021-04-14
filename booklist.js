@@ -49,7 +49,7 @@ class Booklist {
       }
     })
       var result = await client.query('SELECT * FROM books')
-
+      client.end()
       result.rows.forEach(element => listofbook.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
       console.log(listofbook)
       return listofbook
