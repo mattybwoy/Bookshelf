@@ -38,27 +38,9 @@ app.put('/edit', (req, res) => {
 })
 
 app.get('/list', async (req, res) => {
-  //booklist.list()
   res.locals.listofbook = await booklist.list();
   console.log(res.locals.listofbook)
-  res.render('list')
-  //res.sendFile(path.join(__dirname + '/public/list.html'));
-
-  // var bookList = []
-  // try {
-  //   await client.query('SELECT * FROM books', (error, result) => {
-  //     if(error) {
-  //       console.log(error)
-  //       throw error
-  //     }
-  //   result.rows.forEach(element => bookList.push( new booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
-  //   console.log(bookList)
-  //     res.status(200).json(bookList)
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  // }
-   
+  res.render('list')  
 })
 
 app.post('/list/isbn', (req,res) => {

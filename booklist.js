@@ -48,7 +48,6 @@ class Booklist {
         return console.error('could not connect to postgres', err);
       }
     })
-
       var result = await client.query('SELECT * FROM books')
 
       result.rows.forEach(element => listofbook.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
