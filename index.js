@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 
 app.get('/add', (req, res) => {
   res.render('add')
-  //res.sendFile(path.join(__dirname + '/public/add.html'));
 })
 
 app.post('/add', (req, res) => {
@@ -31,7 +30,6 @@ app.post('/add', (req, res) => {
 
 app.get('/edit', (req,res) => {
   res.render('edit')
-  res.sendFile(path.join(__dirname + '/public/edit.html'));
 })
 
 app.put('/edit', (req, res) => {
@@ -68,7 +66,6 @@ app.post('/list/isbn', (req,res) => {
 
 app.get('/delete', (req, res) => {
   res.render('delete')
-  //res.sendFile(path.join(__dirname + '/public/delete.html'));
 })
 
 app.delete('/delete', (req,res) => {
