@@ -44,7 +44,7 @@ app.get('/list', async (req, res) => {
   res.render('list')  
 })
 
-app.post('/list/isbn', (req,res) => {
+app.post('/list/isbn', async (req,res) => {
   const isbn = req.body.isbn
 
     try {
@@ -56,6 +56,8 @@ app.post('/list/isbn', (req,res) => {
     for (let book of result.rows) {
       if(book.isbn == isbn) {
         return res.json(book)
+      } else {
+        return res.json(isbn + " Book not found")
       }
     } 
     });
