@@ -55,6 +55,34 @@ class Booklist {
       return listofbook
   }
 
+  static async listISBN(isbn) {
+    var pg = require('pg');
+    require('dotenv').config();
+
+    var client = new pg.Client(process.env.conString);
+    //var listofbook = [];
+
+    client.connect(function (err) {
+      if (err) {
+        return console.error('could not connect to postgres', err);
+      }
+    })
+      var result = await client.query('SELECT * FROM books')
+      client.end()
+      for (let book of result.rows) {
+      if(book.isbn == isbn) {
+        return book
+      } else {
+        return isbn + " Book not found"
+      }
+    } 
+      // result.rows.forEach(element => listofbook.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
+      // console.log(listofbook)
+      //return listofbook
+  }
+
+
+
   static delete(isbn) {
     var pg = require('pg');
     require('dotenv').config();

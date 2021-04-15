@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BookWorld</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/index.css" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+    <hr>
+    <h1 class="h1"><a href="http://localhost:3000" style="color: black;">BookWorld</a></h1>
+    <h2>Search Results</h2>
+    <hr>
+
+        <div class="row" id="books">
+          <% ((book) => { %>
+            <div class="col-6">
+              <div class="card border-dark mb-3">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= book.title %></h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><%= book.isbn %></h6>
+
+                      <div><strong>Author:</strong> <%= book.author %></div>
+                      <div><strong>Publisher:</strong> <%= book.publisher %></div>
+                      <div><strong>Number Of Pages:</strong> <%= book.pages %></div>
+                      <div><strong>Rating:</strong> <%= book.rating %></div>
+                      <hr>
+                      <button type="button" class="btn btn-danger">Delete</button>
+                      <button types="button" class="btn btn-primary" data-toggle="modal"
+                          data-target="#editBookModal" onClick="setEditModal(<%= book.isbn %>)">
+                          Edit
+                      </button>
+                  </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div id="editBookModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="editForm" action="http://localhost:3000/edit?_method=PUT" method="POST">
+                    <div class="form-group">
+                      <label for="ISBN">ISBN</label>
+                      <input class="form-control" name="isbn" id="isbn">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Title">Title</label>
+                      <input class="form-control" name="title" id="title">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Author">Author</label>
+                      <input class="form-control" name="author">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Publisher">Publisher</label>
+                      <input class="form-control" name="publisher">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Pages">Pages</label>
+                      <input class="form-control" name="pages">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Rating">Rating</label>
+                      <input class="form-control" name="rating">
+                    </div>
+              
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $( ".card" ).hover(
+      function() {
+    $(this).addClass('shadow-lg').css('cursor'); 
+      }, function() {
+    $(this).removeClass('shadow-lg');
+      }
+    );
+</script>
+    <script src="" async defer></script>
+  </body>
+  <footer>A MATTYBWOY CREATION<br/>Powered by Node<br></br>
+    <img src="/nodejs-logo.png" alt="https://nodejs.org/en/" width= "40"></img>
+  </footer>
+</html>
