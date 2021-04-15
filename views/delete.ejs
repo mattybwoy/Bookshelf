@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+    <div class="container">
+    <hr>
+    <h1 class="h1"><a href="http://localhost:3000" style="color: black;">BookWorld</a></h1>
+    <h2>Delete Book</h2>
+    <hr>
+
+    <form action="http://localhost:3000/delete?_method=DELETE" method="POST">
+        <div class="col-6">
+        <div class="form-group">
+            <label for="ISBN">ISBN</label>
+            <input class="form-control" name="isbn">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+            </div>
+    <script src="" async defer></script>
+  </body>
+    <footer>A MATTYBWOY CREATION<br/>Powered by Node<br></br>
+    <img src = "/nodejs-logo.png" alt="https://nodejs.org/en/" width= "40"></img>
+  </footer>
+</html>

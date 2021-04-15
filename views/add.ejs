@@ -10,17 +10,17 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
 
 <div class="container">
     <hr>
     <h1 class="h1"><a href="http://localhost:3000" style="color: black;">BookWorld</a></h1>
-    <h2>Edit Book</h2>
+    <h2>Create New Book</h2>
     <hr>
 
-    <form action="http://localhost:3000/edit?_method=PUT" method="POST">
+    <form action="http://localhost:3000/add" method="POST">
         <div class="col-6">
         <div class="form-group">
             <label for="ISBN">ISBN</label>
@@ -51,15 +51,16 @@
             <label for="Rating">Rating</label>
             <input class="form-control" name="rating">
         </div>
-      
+
         <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
     </form>
+</div>
 </div>
     
     <script src="" async defer></script>
   </body>
   <footer>A MATTYBWOY CREATION<br/>Powered by Node<br></br>
-    <img src = "/nodejs-logo.png" alt="https://nodejs.org/en/" width= "40"></img>
+    <img src = "./nodejs-logo.png" alt="https://nodejs.org/en/" width= "40"></img>
   </footer>
 </html>
+
