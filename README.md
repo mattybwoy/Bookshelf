@@ -22,6 +22,7 @@ A REST API of books with postgreSQL cloud database.
 - Individual books can be searched for in homepage
 - Books now listed as bootstrap cards
 - Alert box now appears if ISBN searched is less than 10 char
+- Search results are now displayed as cards
 
 ## Improvements
 - Formatting
