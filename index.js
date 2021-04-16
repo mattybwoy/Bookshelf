@@ -45,27 +45,11 @@ app.get('/list', async (req, res) => {
 })
 
 app.post('/list/isbn', async (req,res) => {
-  //const isbn = req.body.isbn
-  booklist.listISBN(req.body.isbn)
+  res.locals.listofbook = await booklist.listISBN(req.body.isbn)
+  console.log(res.locals.listofbook)
   res.render('listisbn')
-  //   try {
-  //   client.query('SELECT * FROM books', (error, result) => {
-  //     if(error) {
-  //       console.log(error)
-  //       throw error
-  //     }
-  //   for (let book of result.rows) {
-  //     if(book.isbn == isbn) {
-  //       return res.json(book)
-  //     } else {
-  //       return res.json(isbn + " Book not found")
-  //     }
-  //   } 
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  // }
 })
+
 
 app.get('/delete', (req, res) => {
   res.render('delete')

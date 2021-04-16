@@ -60,7 +60,7 @@ class Booklist {
     require('dotenv').config();
 
     var client = new pg.Client(process.env.conString);
-    //var listofbook = [];
+    var listofbook = [];
 
     client.connect(function (err) {
       if (err) {
@@ -71,14 +71,10 @@ class Booklist {
       client.end()
       for (let book of result.rows) {
       if(book.isbn == isbn) {
-        return book
-      } else {
-        return isbn + " Book not found"
+        listofbook.push( new Booklist (book.isbn, book.title, book.author, book.publisher, book.pages, book.rating));
       }
     } 
-      // result.rows.forEach(element => listofbook.push( new Booklist (element.isbn, element.title, element.author, element.publisher, element.pages, element.rating)));
-      // console.log(listofbook)
-      //return listofbook
+      return listofbook
   }
 
 
