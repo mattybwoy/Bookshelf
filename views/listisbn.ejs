@@ -19,13 +19,13 @@
     <h2>Search Results</h2>
     <hr>
         <div class="row" id="books">
+          <%if (listofbook.length > 0) { %>
           <% listofbook.map((book) => { %>
             <div class="col-6">
               <div class="card border-dark mb-3">
                   <div class="card-body">
                       <h5 class="card-title"><%= book.title %></h5>
                       <h6 class="card-subtitle mb-2 text-muted"><%= book.isbn %></h6>
-
                       <div><strong>Author:</strong> <%= book.author %></div>
                       <div><strong>Publisher:</strong> <%= book.publisher %></div>
                       <div><strong>Number Of Pages:</strong> <%= book.pages %></div>
@@ -40,6 +40,9 @@
               </div>
             </div>
           <% }); %>
+          <% } else { %>  
+            <p>No results found</p>
+          <% } %>
         </div>
         </div>
     </div>

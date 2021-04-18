@@ -46,7 +46,6 @@ app.get('/list', async (req, res) => {
 
 app.post('/list/isbn', async (req,res) => {
   res.locals.listofbook = await booklist.listISBN(req.body.isbn)
-  console.log(res.locals.listofbook)
   res.render('listisbn')
 })
 
