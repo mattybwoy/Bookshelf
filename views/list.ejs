@@ -30,7 +30,8 @@
                       <div><strong>Number Of Pages:</strong> <%= book.pages %></div>
                       <div><strong>Rating:</strong> <%= book.rating %></div>
                       <hr>
-                      <button type="button" class="btn btn-danger">Delete</button>
+                      <button type="button" class="btn btn-danger" data-toggle="modal"
+                          data-target="#deleteBookModal" onClick="setDeleteModal(<%= book.isbn %>)">Delete</button>
                       <button types="button" class="btn btn-primary" data-toggle="modal"
                           data-target="#editBookModal" onClick="setEditModal(<%= book.isbn %>)">
                           Edit
@@ -93,6 +94,30 @@
         </div>
     </div>
 </div>
+
+<div id="deleteBookModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="deleteForm" action="http://localhost:3000/delete?_method=DELETE" method="POST">
+                    <div class="form-group">
+                      <label for="ISBN">ISBN</label>
+                      <input class="form-control" name="isbn" id="isbn">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $( ".card" ).hover(
       function() {
