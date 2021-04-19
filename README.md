@@ -40,6 +40,15 @@ To Run
 - `node index`
 
 ## Screenshots
+![Homepage](public/Homepage.png)
+Homepage
+
+![Add Book](public/AddBook.png)
+Add a book
+
+![List all Books](public/ListBook.png)
+Books are listed as Bootstrap cards
+
 
 ## Tech Stack
 HTML, CSS, Bootstrap, Javascript, NodeJS, Express, ElephantSQL
